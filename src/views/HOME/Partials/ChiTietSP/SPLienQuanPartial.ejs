@@ -2,6 +2,25 @@
     <div class="item">
         <div class="products-single fix">
             <div class="box-img-hover">
+                <% if(allsp.ThuocTinh=='New' ) { %>
+                    <div class="type-lb">
+                        <p class="new">
+                            <%= allsp.ThuocTinh %>
+                        </p>
+                    </div>
+                    <% } else if(allsp.ThuocTinh=='Sale' ) { %>
+                        <div class="type-lb">
+                            <p class="sale">
+                                <%= allsp.ThuocTinh %>
+                            </p>
+                        </div>
+                        <% } else { %>
+                            <div class="type-lb">
+                                <p class="hot">
+                                    <%= allsp.ThuocTinh %>
+                                </p>
+                            </div>
+                            <% } %>
                 <img style="height: 150px;" src="images/upload/<%= getRelativeImagePath(allsp.Image) %>"
                     class="img-fluid" alt="Image">
                 <div class="mask-icon">
@@ -22,12 +41,20 @@
                         <%= allsp.TenSP %>
                     </h4>
                 </a>
-                <h5> <del style="font-size: 13px;
-                    color: #666;">
-                        <%= formatCurrency(allsp.GiaCu) %>
-                    </del>
-                    <%= formatCurrency(allsp.GiaBan) %>
-                </h5>
+                <% if(allsp.GiaCu== 0 ) { %>
+                    <h5>
+
+                        <%= formatCurrency(allsp.GiaBan) %>
+                    </h5>
+                    <% } else { %>
+                        <h5>
+                            <del style="font-size: 13px;
+                        color: #666;">>
+                                <%= formatCurrency(allsp.GiaCu) %>
+                            </del>
+                            <%= formatCurrency(allsp.GiaBan) %>
+                        </h5>
+                        <% } %>
             </div>
         </div>
     </div>

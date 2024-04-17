@@ -32,7 +32,10 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.HOME/js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="link-to-flash-library.js"></script>
+    <!-- Ví dụ với thư viện sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -47,42 +50,39 @@
         <div id="slides-shop" class="cover-slides">
             <ul class="slides-container">
                 <li class="text-center">
-                    <img src="HOME/images/banner-01.jpg" alt="">
+                    <img src="HOME/images/banner1.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                                <p class="m-b-40">See how your users experience your website in realtime or view <br>
-                                    trends
-                                    to see any changes in performance over time.</p>
+                                <h1 class="m-b-20"><strong>Welcome To <br> Petshop</strong></h1>
+                                <p class="m-b-40">Ở đây có thú cưng <br>
+                                    Và nhiều hơn thế nữa.</p>
                                 <p><a class="btn hvr-hover" href="#">Shop New</a></p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="text-center">
-                    <img src="HOME/images/banner-02.jpg" alt="">
+                    <img src="HOME/images/banner2.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                                <p class="m-b-40">See how your users experience your website in realtime or view <br>
-                                    trends
-                                    to see any changes in performance over time.</p>
+                                <h1 class="m-b-20"><strong>Welcome To <br> Petshop</strong></h1>
+                                <p class="m-b-40">Ở đây có thú cưng <br>
+                                    Và nhiều hơn thế nữa.</p>
                                 <p><a class="btn hvr-hover" href="#">Shop New</a></p>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="text-center">
-                    <img src="HOME/images/banner-03.jpg" alt="">
+                    <img src="HOME/images/banner3.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                                <p class="m-b-40">See how your users experience your website in realtime or view <br>
-                                    trends
-                                    to see any changes in performance over time.</p>
+                                <h1 class="m-b-20"><strong>Welcome To <br> PetShop</strong></h1>
+                                <p class="m-b-40">Ở đây có thú cưng <br>
+                                    Và nhiều hơn thế nữa.</p>
                                 <p><a class="btn hvr-hover" href="#">Shop New</a></p>
                             </div>
                         </div>
@@ -98,24 +98,27 @@
 
         <!-- Start Categories  -->
         <div class="categories-shop">
+            <div class="title-all text-center">
+                <h1>DANH MỤC SẢN PHẨM </h1>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="HOME/images/categories_img_01.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Chó Cảnh</a>
+                            <img style="height: 354px; width: 354px;" class="img-fluid" src="HOME/images/DmDog.jpg" alt="" />
+                            <a class="btn hvr-hover" href="/TrangSP?idPL=6617c3d3fdd896abb8d4cee8">Chó Cảnh</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="HOME/images/categories_img_02.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Mèo Cảnh</a>
+                            <img style="height: 354px; width: 354px;" class="img-fluid" src="HOME/images/DmCat.jpeg" alt="" />
+                            <a class="btn hvr-hover" href="/TrangSP?idPL=6617c3e2fdd896abb8d4cee9">Mèo Cảnh</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="HOME/images/categories_img_03.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Phụ Kiện</a>
+                            <img style="height: 354px; width: 354px;" class="img-fluid" src="HOME/images/DmPhuKien.jpg" alt="" />
+                            <a class="btn hvr-hover" href="/TrangSP?idPL=6617c3f1fdd896abb8d4ceea">Phụ Kiện</a>
                         </div>
                     </div>
                 </div>
@@ -123,22 +126,7 @@
         </div>
         <!-- End Categories -->
 
-        <div class="box-add-products">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="offer-box-products">
-                            <img class="img-fluid" src="HOME/images/add-img-01.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="offer-box-products">
-                            <img class="img-fluid" src="HOME/images/add-img-02.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+ 
 
         <!-- Start Products  -->
         <div class="products-box">
@@ -202,7 +190,10 @@
                                                                     title="Add to Wishlist"><i
                                                                         class="far fa-heart"></i></a></li>
                                                         </ul>
-                                                        <a class="cart" href="#">Add to Cart</a>
+                                                        <form id="form-addtocart" action="/ThemGioHang?productId=<%= banchay._id %>" method="POST">
+                                                            <input value="" name="quantity" type="hidden" data-product-id="<%= banchay._id %>">
+                                                        <button class="cart" type="submit">Thêm vào giỏ</button>
+                                                        </form>
                                                     </div>
                                 </div>
                                 <div class="why-text">
@@ -230,8 +221,9 @@
                         </div>
                         <% }); %>
 
-                            <% noibat.forEach(function(noibat) { %>
-                                <div class="col-lg-3 col-md-6 special-grid top-featured">
+                        <% noibat.forEach(function(noibat) { %>
+                        
+                            <div class="col-lg-3 col-md-6 special-grid top-featured">
                                     <div class="products-single fix">
                                         <div class="box-img-hover">
                                             <% if(noibat.ThuocTinh=='New' ) { %>
@@ -267,7 +259,10 @@
                                                             title="Add to Wishlist"><i class="far fa-heart"></i></a>
                                                     </li>
                                                 </ul>
-                                                <a class="cart" href="#">Add to Cart</a>
+                                                <form id="form-addtocart1" action="/ThemGioHang?productId=<%= noibat._id %>" method="POST">
+                                                    <input value="1" name="quantity" type="hidden" data-product-id="<%= noibat._id %>">
+                                                <button class="cart" type="submit">Thêm vào giỏ</button>
+                                                </form>
                                             </div>
                                         </div>
                                         <div class="why-text">
@@ -292,9 +287,10 @@
                                                     <% } %>
                                         </div>
                                     </div>
-                                </div>
-                                <% }); %>
+                            </div>
+                        <% }); %>
                 </div>
+                
             </div>
         </div>
         <!-- End Products  -->
@@ -604,6 +600,164 @@
                 return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
             }
         </script>
+            <script>
+                // Add this script to handle the notification
+            document.addEventListener("DOMContentLoaded", function () {
+                const productForms = document.querySelectorAll("#form-addtocart");
+        
+                productForms.forEach(function(form) {
+                    form.addEventListener("submit", function (event) {
+                        event.preventDefault();
+                        const productId = form.querySelector("input[name='quantity']").getAttribute("data-product-id");
+                        
+        
+                        fetch(`/ThemGioHang?productId=${productId}`, {
+                            method: "POST",
+                            body: new URLSearchParams({
+                                quantity: 1,
+                               
+                            }),
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if(data.loggedIn && data.hoten){
+                                if (data.success) {
+                                    // Show success alert
+                                    // alert("Sản phẩm đã được thêm vào giỏ hàng!");
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Thành công!',
+                                        text: 'Sản phẩm đã được thêm vào giỏ hàng.',
+                                        confirmButtonText: 'Mua Tiếp'
+                                    })
+                                    .then(() => {
+                                        window.location.reload(); // Tải lại trang hiện tại    
+                                    });
+                                } else {
+                                    // Show error alert
+                                    // alert("Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng!"); 
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Hết hàng!',
+                                        text: data.message,
+                                        confirmButtonText: 'OK SHOP'
+                                    });                       
+                                }
+                            } else {
+                                if (data.success) {
+                                    // Show success alert
+                                    // alert("Sản phẩm đã được thêm vào giỏ hàng!");
+                                    Swal.fire({
+                                        icon: 'warning',
+                                        //title: 'Hãy đăng nhập để tiến hành mua hàng!', 
+                                        text: 'Bạn cần đăng nhập để tiến hành mua hàng',
+                                        confirmButtonText: 'Đi tới đăng nhập'
+                                    })
+                                    .then(() => {
+                                        window.location.href = '/LoginKH';
+                                    });
+                                } else {
+                                    // Show error alert
+                                    // alert("Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng!"); 
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Hết hàng!',
+                                        text: data.message,
+                                        confirmButtonText: 'OK SHOP'
+                                    });                       
+                                }
+                            }
+                            
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                    });
+                });
+            });
+            </script>
+            <script>
+                // Add this script to handle the notification
+            document.addEventListener("DOMContentLoaded", function () {
+                const productForms = document.querySelectorAll("#form-addtocart1");
+        
+                productForms.forEach(function(form) {
+                    form.addEventListener("submit", function (event) {
+                        event.preventDefault();
+                        const productId = form.querySelector("input[name='quantity']").getAttribute("data-product-id");
+                        
+        
+                        fetch(`/ThemGioHang?productId=${productId}`, {
+                            method: "POST",
+                            body: new URLSearchParams({
+                                quantity: 1,
+                               
+                            }),
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if(data.loggedIn && data.hoten){
+                                if (data.success) {
+                                    // Show success alert
+                                    // alert("Sản phẩm đã được thêm vào giỏ hàng!");
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Thành công!',
+                                        text: 'Sản phẩm đã được thêm vào giỏ hàng.',
+                                        confirmButtonText: 'Mua Tiếp'
+                                    })
+                                    .then(() => {
+                                        window.location.reload(); // Tải lại trang hiện tại    
+                                    });
+                                } else {
+                                    // Show error alert
+                                    // alert("Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng!"); 
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Hết hàng!',
+                                        text: data.message,
+                                        confirmButtonText: 'OK SHOP'
+                                    });                       
+                                }
+                            } else {
+                                if (data.success) {
+                                    // Show success alert
+                                    // alert("Sản phẩm đã được thêm vào giỏ hàng!");
+                                    Swal.fire({
+                                        icon: 'warning',
+                                        //title: 'Hãy đăng nhập để tiến hành mua hàng!', 
+                                        text: 'Bạn cần đăng nhập để tiến hành mua hàng',
+                                        confirmButtonText: 'Đi tới đăng nhập'
+                                    })
+                                    .then(() => {
+                                        window.location.href = '/LoginKH';
+                                    });
+                                } else {
+                                    // Show error alert
+                                    // alert("Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng!"); 
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Hết hàng!',
+                                        text: data.message,
+                                        confirmButtonText: 'OK SHOP'
+                                    });                       
+                                }
+                            }
+                            
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                    });
+                });
+            });
+            </script>
 </body>
 
 

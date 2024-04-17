@@ -18,9 +18,14 @@ const { getTrangChu, } = require("../controllers/HomeTrangChu/homeController");
 const { TrangSanPham, } = require("../controllers/TrangSP/TrangSPController");
 // Trang Chi tiết sản phẩm controller
 const { TrangChiTietSP, } = require("../controllers/ChiTietSP/chitietSPController");
+// Trang Giỏ hàng controller
+const { getGioHang, ThemGioHang, thongtinGioHang, getSuaGioHang, SuaSoLuongSanPham } = require("../controllers/GioHang/GioHangController"); 
+// Trang Checkout controller
+// const { getCheckout } = require("../controllers/Checkout/CheckoutController"); 
+
 
 // Login khách hàng
-const { getFormLoginKH } = require('../controllers/Login/loginKHController');
+const { getFormLoginKH, DangKyKH, DangNhapKH, DangXuatKH } = require('../controllers/Login/loginKHController'); 
 
 const router = express.Router();
 //  -------------------------------------------
@@ -47,10 +52,23 @@ router.get("/", getTrangChu)
 router.get("/TrangSP", TrangSanPham)
 router.get("/ChiTietSP", TrangChiTietSP)
 
+//GioHang 
+router.get("/thongtingiohang", thongtinGioHang)
+router.get("/TrangGioHang", getGioHang)
+router.post("/ThemGioHang", ThemGioHang)
+router.get("/TrangSuaGioHang", getSuaGioHang)
+router.post("/SuaGioHang", SuaSoLuongSanPham)
+
+//Checkout 
+// router.get("/TrangCheckout", getCheckout)
+
 
 
 // LOGIN Tai Khoan Khach Hang
 router.get("/loginKH", getFormLoginKH)
+router.post("/DangKyKH", DangKyKH)
+router.post("/DangNhapKH", DangNhapKH)
+router.get("/DangXuatKH", DangXuatKH)
 
 
 module.exports = router;

@@ -39,17 +39,17 @@ const CartSchema = new Schema({
 // tự động cập nhật lại khi thay đổi
 CartSchema.methods.calculateTotals = function () {
     const cart = this.cart;
-  
+
     // Tính toán tổng giá và tổng số lượng từ mảng items
     const { totalPrice, totalQuaty } = cart.items.reduce(
-      (acc, item) => {
-        acc.totalPrice += item.productId.GiaBan * item.qty;
-        acc.totalQuaty += item.qty;
-        return acc;
-      },
-      { totalPrice: 0, totalQuaty: 0 }
+        (acc, item) => {
+            acc.totalPrice += item.productId.GiaBan * item.qty;
+            acc.totalQuaty += item.qty;
+            return acc;
+        },
+        { totalPrice: 0, totalQuaty: 0 }
     );
-  
+
     // Cập nhật giá trị mới
     cart.totalPrice = totalPrice;
     cart.totalQuaty = totalQuaty;

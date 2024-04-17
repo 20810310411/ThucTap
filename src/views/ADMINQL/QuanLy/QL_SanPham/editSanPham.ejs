@@ -105,9 +105,6 @@
                                                 style="color: red;font-size: 18px;">*</span></label>
                                         <select id="IdLoaiSP" name="IdLoaiSP" class="form-control"
                                             aria-label="Default select example" style="width: 320px; font-size: 18px;">
-                                            <option value="<%= nutSuaSP.IdLoaiSP._id %>" selected>
-                                                <%= nutSuaSP.IdLoaiSP.TenLoaiSP %>
-                                            </option>
                                             <% loaiSP.forEach(function(loaiSP) { %>
                                                 <option value="<%= loaiSP._id %>">
                                                     <%= loaiSP.TenLoaiSP %>

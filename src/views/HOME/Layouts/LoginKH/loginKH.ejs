@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Login & Registration Form</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login & Registration Form</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+  <script src="link-to-flash-library.js"></script>
+    <!-- Ví dụ với thư viện sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
   <div class="cont">
     <div class="form sign-in">
-      <h2>Sign In</h2>
-      <label>
-        <span>Email Address</span>
-        <input type="email" name="email">
-      </label>
-      <label>
-        <span>Password</span>
-        <input type="password" name="password">
-      </label>
-      <button class="submit" type="button">Sign In</button>
-     
+      <form method="POST" class="register-form" id="login-form" action="/DangNhapKH">
+        <h2>Đăng nhập</h2>
+        <label>
+          <span>Tên đăng nhập:</span>
+          <input type="taikhoan" name="taikhoan">
+        </label>
+        <label>
+          <span>Mật khẩu</span>
+          <input type="matkhau" name="matkhau">
+        </label>
+        <button class="submit" type="submit">Đăng nhập</button>
+      </form>
 
       <div class="social-media">
         <ul>
@@ -35,41 +42,95 @@
     <div class="sub-cont">
       <div class="img">
         <div class="img-text m-up">
-          <h1>New here?</h1>
-          <p>sign up and discover</p>
+          <h1>Người mới?</h1>
+          <p>Đăng ký và khám phá</p>
         </div>
         <div class="img-text m-in">
-          <h1>One of us?</h1>
-          <p>just sign in</p>
+          <h1>Bạn đã có tài khoản?</h1>
+          <p>Hãy đăng nhập</p>
         </div>
         <div class="img-btn">
-          <span class="m-up">Sign Up</span>
-          <span class="m-in">Sign In</span>
+          <span class="m-up">Đăng ký</span>
+          <span class="m-in">Đăng nhập</span>
         </div>
       </div>
       <div class="form sign-up">
-        <h2>Sign Up</h2>
-        <label>
-          <span>Name</span>
-          <input type="text">
-        </label>
-        <label>
-          <span>Email</span>
-          <input type="email">
-        </label>
-        <label>
-          <span>Password</span>
-          <input type="password">
-        </label>
-        <label>
-          <span>Confirm Password</span>
-          <input type="password">
-        </label>
-        <button type="button" class="submit">Sign Up Now</button>
+        <form method="POST" action="/DangKyKH" class="register-form" id="register-form">
+          <h2>Đăng ký</h2>
+          <label>
+            <span>Họ và tên</span>
+            <input required type="text" name="name" id="name" placeholder="nhập họ và tên...">
+          </label>
+          <label>
+            <span>Tên đăng nhập</span>
+            <input required type="taikhoan" name="acc" id="acc" placeholder="nhập tên đăng nhập...">
+          </label>
+          <label>
+            <span>Mật khẩu</span>
+            <input required type="password" name="pass" id="pass" placeholder="nhập mật khẩu...">
+          </label>
+          <label>
+            <span>Xác nhận mật khẩu</span>
+            <input required type="password" placeholder="nhập lại mật khẩu...">
+          </label>
+          <button type="submit" class="submit" name="signup" id="signup">Đăng ký ngay</button>
+        </form>
       </div>
     </div>
   </div>
-<script type="text/javascript" src="script.js"></script>
-</body>
-</html>
+  <script type="text/javascript" src="script.js"></script>
+  <script>
+    // phan dang nhap khach hang
+    const loginform = document.getElementById('login-form');
 
+    loginform.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(loginform);
+      const response = await fetch('/DangNhapKH', {
+        method: 'POST',
+        body: formData
+      });
+
+      const responseData = await response.json();
+
+      if (responseData.success) {
+        // Reset form after 3 seconds
+        alert(responseData.message)
+        window.location.href = '/';
+      } else {
+        // Reset form after 3 seconds
+        alert(responseData.message)
+        loginform.reset(); // Reset form fields 
+      }
+    });
+  </script>
+  <script>
+    // phan dang ky khach hang
+    const loginform1 = document.getElementById('register-form');
+
+    loginform1.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(loginform1);
+      const response = await fetch('/DangKyKH', {
+        method: 'POST',
+        body: formData
+      });
+
+      const responseData = await response.json();
+
+      if (responseData.success) {
+        // Reset form after 3 seconds
+        alert(responseData.message)
+        window.location.href = '/loginKH';
+      } else {
+        // Reset form after 3 seconds
+        alert(responseData.message)
+        loginform1.reset(); // Reset form fields 
+      }
+    });
+  </script>
+</body>
+
+</html>
