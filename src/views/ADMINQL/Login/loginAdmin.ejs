@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Mật khẩu" name="MatKhau"> 
+                                                id="exampleInputPassword" placeholder="Mật khẩu" name="MatKhau">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -61,7 +61,7 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-                                        <hr>                          
+                                        <hr>
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -94,31 +94,30 @@
 
     <script>
         // phan dang nhap tai khoan admin
-const loginform = document.getElementById('loginAdmin');
+        const loginform = document.getElementById('loginAdmin');
 
-loginform.addEventListener('submit', async function (event) {
-    event.preventDefault();
+        loginform.addEventListener('submit', async function (event) {
+            event.preventDefault();
 
-    const formData = new FormData(loginform);
-    const response = await fetch('/login-Admin', {
-        method: 'POST',
-        body: formData
-    });
+            const formData = new FormData(loginform);
+            const response = await fetch('/login-Admin', {
+                method: 'POST',
+                body: formData
+            });
 
-    const responseData = await response.json();   
+            const responseData = await response.json();
 
-    if(responseData.success) {
-        // Reset form after 3 seconds
-        alert(responseData.message)        
-        window.location.href = '/TrangChuAdmin';
-    } else {
-        // Reset form after 3 seconds
-        alert(responseData.message)                                                    
-        loginform.reset(); // Reset form fields 
-    }        
-});
+            if (responseData.success) {
+                // Reset form after 3 seconds
+                alert(responseData.message)
+                window.location.href = '/TrangChuAdmin';
+            } else {
+                // Reset form after 3 seconds
+                alert(responseData.message)
+                loginform.reset(); // Reset form fields 
+            }
+        });
     </script>
 </body>
 
 </html>
-

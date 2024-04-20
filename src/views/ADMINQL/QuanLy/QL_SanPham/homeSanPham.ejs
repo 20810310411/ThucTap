@@ -19,6 +19,12 @@
 
     <!-- Custom styles for this template-->
     <link href="CHAY/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Thêm Thư Viện Flash -->
+    <script src="link-to-flash-library.js"></script>
+    <!-- Ví dụ với thư viện sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -54,7 +60,7 @@
                             <h4>Quản lý dữ liệu</h4>
                             <a href="/formThemSP" id="addButton" class="btn btn-success">Thêm</a>
                             <table class="table table-hover">
-                                <thead>
+                                <thead class="thead-dark">
                                     <tr style=" color: black; font-size: 18px; ">
                                         <th style="text-align: center; vertical-align: middle;">Hình Ảnh</th>
                                         <th style="width: 150px;text-align: center; vertical-align: middle;">Tên SP</th>
@@ -64,8 +70,8 @@
                                         <th style="text-align: center; vertical-align: middle;">Loại SP</th>
                                         <th style="text-align: center; vertical-align: middle;">Thuộc Tính</th>
                                         <th style="text-align: center; vertical-align: middle;">NB_BC</th>
-                                        <th style="width: 200px; text-align: center; vertical-align: middle;">Mô tả
-                                        </th>
+                                        <th style="width: 200px; text-align: center; vertical-align: middle;">Mô tả</th>
+                                        <th style="text-align: center; vertical-align: middle;">Chức năng</th>
                                     </tr>
                                 <tbody>
                                     <% all.forEach(function(allsp, index) { %>
@@ -96,7 +102,19 @@
                                                 <%=allsp.NB_BC %>
                                             </td>
                                             <td style="width: 200px; text-align: center; vertical-align: middle;">
-                                                <%=allsp.MoTa %>
+                                                <p class="design" id="motaODay<%= allsp._id %>"></p>
+                                                <span style="display: none;" id="inpMoTa<%= allsp._id %>"><%= (allsp.MoTa) %></span>
+                                        
+                                                <script>
+                                                    // Wait for the entire document to be loaded before executing any JavaScript
+                                                    document.addEventListener("DOMContentLoaded", function() {
+                                                        // Get the value from the span element with the id "inpMoTa"
+                                                        var inpMoTa = document.getElementById("inpMoTa<%= allsp._id %>").innerText;
+                                                        
+                                                        // Set the inner HTML of the paragraph element with the id "motaODay"
+                                                        document.getElementById("motaODay<%= allsp._id %>").innerHTML = inpMoTa;
+                                                    });  
+                                                </script>
                                             </td>
                                             <td>
                                                 <a class="btn btn-success button-SUA-XOA"
@@ -113,6 +131,35 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="pagination-container">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                <% 
+                                  const pre = curPage <= 1 ? curPage : curPage - 1; 
+                                  const next = curPage >= soTrang ? curPage : parseInt(curPage) + 1            
+                                %>
+                                    <li class="page-item">
+                                        <a class="page-link" style=" font-weight: bolder;" href="/trangQLSP?page=<%=pre%>">
+                                            &lt;
+                                        </a>
+                                    </li>
+                                <% for(var i=1; i <=soTrang; i++) { 
+                                    var active="" ; 
+                                    if(i == curPage) active="active" ; %>
+                                    <li class="page-item <%=active%>">
+                                        <a class="page-link" style="font-size: 18px; font-weight: bolder;"  href="/trangQLSP?page=<%=i%>">
+                                            <%=i%>                          
+                                        </a>
+                                    </li>                
+                                <% } %>                                                      
+                                    <li class="page-item">
+                                        <a class="page-link" style=" font-weight: bolder;" href="/trangQLSP?page=<%=next%>">
+                                            &gt;
+                                        </a>
+                                    </li>                     
+                                </ul>
+                            </nav>
+                        </div>
                 </div>
                 <!-- End of Main Content -->
 
@@ -125,7 +172,7 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
+    
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>

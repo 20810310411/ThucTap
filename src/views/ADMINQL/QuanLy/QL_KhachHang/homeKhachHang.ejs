@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Blank</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="CHAY/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="CHAY/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Thêm Thư Viện Flash -->
+    <script src="link-to-flash-library.js"></script>
+    <!-- Ví dụ với thư viện sweetalert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include("../../partials/SlidebarAdmin.ejs") %>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include("../../partials/TopbarAdmin.ejs") %>
+                        <!-- End of Topbar -->
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-4 text-gray-800">Trang quản lý tài khoản khách hàng</h1>
+
+                        </div>
+                        <!-- /.container-fluid -->
+
+                        <div class="container">
+                            <h4>Quản lý dữ liệu</h4>
+                            <a href="" id="addButton" class="btn btn-success">Thêm</a>
+                            <table class="table table-bordered" style="font-size: 20px;">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Họ Tên</th>
+                                        <th scope="col">Tài Khoản / Mật Khẩu</th>
+                                        <th scope="col">Chức Năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% let stt=1; %>
+                                    <% QLtaikhoan_kh.forEach(function(QLtaikhoan_kh, index) { %>  
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= stt %>
+                                                </th>
+                                                <td>
+                                                    <%= QLtaikhoan_kh.HoTen %> <br>
+                                                        (<%= QLtaikhoan_kh.NgayTao %>)
+                                                </td>
+                                                <td>
+                                                    <ul style="  list-style-type: none; margin: 0; padding: 0;">
+                                                        <li>
+                                                            <span>Tên Đăng Nhập : <%= QLtaikhoan_kh.TenDangNhap %></span>
+                                                        </li>
+                                                        <br />
+                                                        <li>
+                                                            <span>Mật Khẩu : </span>
+                                                            <!-- Hiển thị mật khẩu -->
+                                                            <span id="password<%= index %>">********</span>
+                                                            <!-- Icon ẩn/hiện mật khẩu -->
+                                                            <i id="togglePasswordIcon<%= index %>" class="fas fa-eye-slash"
+                                                                onclick="togglePassword('<%= index %>', '<%= QLtaikhoan_kh.MatKhau %>')"></i>
+                                                            <i class="bi bi-shield-slash"></i>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <a href="#" onclick="deleteUser('<%= QLtaikhoan_kh._id %>')"
+                                                        class="btn btn-danger">Xóa</a>
+                                                </td>
+                                            </tr>
+                                            <% stt++; %>
+                                                <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination-container">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                <% 
+                                  const pre = curPage <= 1 ? curPage : curPage - 1; 
+                                  const next = curPage >= soTrang ? curPage : parseInt(curPage) + 1            
+                                %>
+                                    <li class="page-item">
+                                        <a class="page-link" style=" font-weight: bolder;" href="/TrangQLTKKH?page=<%=pre%>">
+                                            &lt;
+                                        </a>
+                                    </li>
+                                <% for(var i=1; i <=soTrang; i++) { 
+                                    var active="" ; 
+                                    if(i == curPage) active="active" ; %>
+                                    <li class="page-item <%=active%>">
+                                        <a class="page-link" style="font-size: 18px; font-weight: bolder;"  href="/TrangQLTKKH?page=<%=i%>">
+                                            <%=i%>                          
+                                        </a>
+                                    </li>                
+                                <% } %>                                                      
+                                    <li class="page-item">
+                                        <a class="page-link" style=" font-weight: bolder;" href="/TrangQLTKKH?page=<%=next%>">
+                                            &gt;
+                                        </a>
+                                    </li>                     
+                                </ul>
+                            </nav>
+                        </div>
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="CHAY/vendor/jquery/jquery.min.js"></script>
+    <script src="CHAY/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="CHAY/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="CHAY/js/sb-admin-2.min.js"></script>
+    <script>
+        function togglePassword(index, actualPassword) {
+            var passwordSpan = document.getElementById('password' + index);
+            var toggleIcon = document.getElementById('togglePasswordIcon' + index);
+
+            // Toggle password visibility
+            if (passwordSpan.innerHTML === '********') {
+                passwordSpan.innerHTML = actualPassword; // Display the actual password
+                toggleIcon.className = 'fas fa-eye'; // Icon when password is visible
+            } else {
+                passwordSpan.innerHTML = '********'; // Hide the actual password
+                toggleIcon.className = 'fas fa-eye-slash'; // Icon when password is hidden
+            }
+        }
+    </script>
+    <script>
+        function deleteUser(userId) {
+            if (confirm("Bạn có chắc chắn muốn xóa?")) {
+                fetch(`/xoataikhoankh/${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    // Có thể thêm các tùy chọn khác như body nếu cần
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Show success alert
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành Công!',
+                                text: data.message,
+                                confirmButtonText: 'OK'
+                            })
+                                .then(() => {
+                                    window.location.reload(); // Tải lại trang hiện tại
+                                });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Lỗi!',
+                                text: 'Có lỗi xảy ra khi xóa. Vui lòng thử lại sau.',
+                                confirmButtonText: 'OK SHOP'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+            }
+        }
+    </script>
+</body>
+
+</html>

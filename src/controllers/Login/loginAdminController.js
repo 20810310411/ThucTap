@@ -25,6 +25,13 @@ module.exports = {
         
             return res.status(200).json({ success: true, message: 'Đăng nhập thành công' });
     },
+    LogoutAdmin: (req, res) => {
+        if (req.session.tk) {
+            req.session.destroy();
+        }
+        // req.logout();
+        res.redirect("/loginAdmin");
+    },
 
 
 }

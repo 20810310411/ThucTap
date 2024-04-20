@@ -16,7 +16,7 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="HOME/images/petshopicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
@@ -127,20 +127,17 @@
                                             <%= formatCurrency(ctsp.GiaBan) %>
                                         </h5>
                                         <% } %>
+                                        <input type="hidden" name="SoLuongTon" value="<%= ctsp.SoLuongTon  %>" />
                                             <p class="available-stock"><span>Sản phẩm còn: <%= ctsp.SoLuongTon %>/ <a
                                                             href="#">Đã bán: <%= ctsp.SoLuongBan %>
                                                         </a></span>
                                             <p>
-                                            <h4>Short Description:</h4>
-                                            <p>
-                                                <%= ctsp.MoTa %>
-                                            </p>
                                             <ul>
                                                 <li>
                                                     <div class="form-group quantity-box">
                                                         <label class="control-label">Số lượng</label>
                                                         <input class="form-control" name="quantity" value="1" min="1"
-                                                            max="20" type="number">
+                                                            max="1000" type="number">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -148,7 +145,7 @@
                                             <div class="price-box-bar">
                                                 <div class="cart-and-bay-btn">
                                                     <a class="btn hvr-hover" data-fancybox-close="" href="#">Buy New</a>
-                                                    <button type="submit" class="btn hvr-hover"
+                                                    <button style="color: white; height: 44px; width: 112; font-weight: bold;" type="submit" class="btn hvr-hover"
                                                         data-fancybox-close="">Add to
                                                         cart</button>
                                                 </div>
@@ -179,6 +176,18 @@
                             </div>
                         </form>
                     </div>
+                </div>
+
+                <div class="row my-5">
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            <h2>Mô tả</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="motaODay"></p>
+                            <input type="hidden" name="inpMoTa" id="inpMoTa" value="<%= (ctsp.MoTa) %>">
+                        </div>
+                      </div>
                 </div>
 
                 <div class="row my-5">
@@ -501,6 +510,22 @@
                 alertElement.style.display = 'none';
             }
         </script>
+
+<script>
+    // Đợi cho trang được tải hoàn toàn trước khi thực hiện các thao tác JavaScript
+    document.addEventListener("DOMContentLoaded", function() {
+        // Lấy giá trị từ phần tử input có id là "inpMoTa"
+        var inpMoTa = document.getElementById("inpMoTa").value;
+        
+        // Gán giá trị vừa lấy được vào phần tử p có id là "motaODay"
+        //document.getElementById("motaODay").innerHTML = inpMoTa;
+        var elements = document.getElementsByClassName("motaODay");
+
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].innerHTML = inpMoTa;
+        }
+    });  
+</script>
 </body>
 
 </html>

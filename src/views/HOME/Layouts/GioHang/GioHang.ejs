@@ -16,7 +16,7 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="HOME/images/petshopicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
@@ -112,9 +112,12 @@
                                                 </p>
                                             </td>
                                             <td class="remove-pr">
-                                                <a href="#">
+                                                <form action="/XoaGioHang" method="post">
+                                                    <input type="hidden" name="idARemove" value="<%=item._id %>">
+                                                <button style="border: none; background-color: white; cursor: pointer;" type="submit">
                                                     <i class="fas fa-times"></i>
-                                                </a>
+                                                </button>
+                                            </form>
                                             </td>
                                         </tr>
                                         <% }); %>
@@ -170,7 +173,7 @@
                             <hr>
                         </div>
                     </div>
-                    <div class="col-12 d-flex shopping-box"><a href="checkout.html"
+                    <div class="col-12 d-flex shopping-box"><a href="/TrangCheckout"
                             class="ml-auto btn hvr-hover">Checkout</a> </div>
                 </div>
 
@@ -386,6 +389,9 @@
         <script src="HOME/js/form-validator.min.js"></script>
         <script src="HOME/js/contact-form-script.js"></script>
         <script src="HOME/js/custom.js"></script>
+        <script>
+            
+        </script>
 </body>
 
 </html>

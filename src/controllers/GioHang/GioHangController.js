@@ -31,7 +31,7 @@ module.exports = {
         const productId = req.query.productId;
         const qtyy = parseInt(req.body.quantity);
         const qty = !isNaN(qtyy) && qtyy > 0 ? qtyy : 1;
-
+        const SoLuongTon = req.body.SoLuongTon;
         // Lấy thông tin đăng nhập của khách hàng từ request
         const customerAccountId = req.session.userId;
         console.log(">>> check id customerAccountId: ", customerAccountId);
@@ -40,6 +40,9 @@ module.exports = {
         console.log("product", product)
         if (!product) {
             return res.status(404).json({ success: false, message: 'Sản phẩm đã hết', loggedIn, hoten });
+        }
+        if(qty > SoLuongTon){
+            return res.status(404).json({success: false, message: 'sản phẩm không đủ', loggedIn, hoten });
         }
 
         // Kiểm tra xem giỏ hàng đã tồn tại chưa, nếu chưa thì tạo mới
@@ -166,7 +169,6 @@ module.exports = {
 
         // Tìm sản phẩm cần cập nhật trong mảng items dựa trên _id
         const updatedCartItem = timCart.cart.items.find(item => item._id.toString() === idupdateCart);
-
         if (updatedCartItem) {
             // Cập nhật qty
             updatedCartItem.qty = quantityy;
@@ -178,6 +180,54 @@ module.exports = {
             return res.redirect('TrangGioHang')
         } else {
             console.log('Không tìm thấy sản phẩm cần cập nhật trong giỏ hàng.');
+        }
+    },
+    XoaGioHang: async (req, res) => {
+        try {
+            let idRemove = req.body.idARemove;
+            console.log("idRemove: ", idRemove);
+
+            const removedProduct = await Cart.findOneAndUpdate(
+                { "cart.items._id": idRemove },
+                { $pull: { "cart.items": { _id: idRemove } } },
+                { new: true } // Trả lại tài liệu đã cập nhật
+            );
+
+            // Kiểm tra xem sản phẩm đã được tìm thấy và xóa chưa
+            if (removedProduct && removedProduct.cart && removedProduct.cart.items) {
+                let totalPrice = 0;
+                let totalQuaty = 0;
+                // Tính tổng giá và tổng số lượng cập nhật dựa trên các mặt hàng còn lại
+                for (const item of removedProduct.cart.items) {
+                    try {
+                        let productDetails = await SanPham.findById(item.productId).exec();
+                        if (productDetails) {
+                            const giaBan = Number(productDetails.GiaBan);
+                            // console.log("giaBan --->>>>", giaBan);
+                            const itemTotal = item.qty * (isNaN(giaBan) ? 0 : giaBan);
+                            // console.log("itemTotal --->>>>", itemTotal);
+
+                            totalPrice += itemTotal;
+                            totalQuaty += item.qty;
+                        }
+                    } catch (error) {
+                        console.error("Lỗi tính toán itemTotal:", error);
+                    }
+                }
+
+                // Cập nhật tổng giá và tổng số lượng trong Giỏ hàng
+                await Cart.findByIdAndUpdate(
+                    { _id: removedProduct._id },
+                    { $set: { 'cart.totalPrice': totalPrice, 'cart.totalQuaty': totalQuaty } }
+                );
+
+                res.redirect("/TrangGioHang");
+            } else {
+                res.status(404).send("Không tìm thấy sản phẩm để xóa.");
+            }
+        } catch (error) {
+            console.error("Lỗi xóa sản phẩm:", error);
+            return res.status(500).json({ error: "Internal server error" });
         }
     },
 

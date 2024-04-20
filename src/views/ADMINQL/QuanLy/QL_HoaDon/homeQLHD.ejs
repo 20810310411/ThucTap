@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Blank</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="CHAY/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="CHAY/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <%- include("../../partials/SlidebarAdmin.ejs") %>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <%- include("../../partials/TopbarAdmin.ejs") %>
+                        <!-- End of Topbar -->
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+
+                            <!-- Page Heading -->
+                            <h1 class="h3 mb-4 text-gray-800">Trang quản lý sản phẩm</h1>
+
+                        </div>
+                        <!-- /.container-fluid -->
+
+                        <div class="container">
+                            <h2 style="text-align: center;">Quản lý hóa đơn</h2>
+                        <div class="btn btn-secondary" style="margin-left: 25px;">Tổng thanh toán : </div>
+                        <br />
+                        <br />
+                        <!-- Content Row -->
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <!-- Earnings (Monthly) Card Example -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2"
+                                                    style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                                    <div
+                                                        class="text-x font-weight-bold text-primary text-uppercase mb-1">
+                                                        Đơn chưa giao</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">chua giao</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Earnings (Monthly) Card Example -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2"
+                                                    style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                                    <div
+                                                        class="text-x font-weight-bold text-success text-uppercase mb-1">
+                                                        Đơn thành công</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        da giao
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Earnings (Monthly) Card Example -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-info shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2"
+                                                    style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                                    <div class="text-x font-weight-bold text-info text-uppercase mb-1">
+                                                        Đơn đang giao
+                                                    </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">dang giao</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pending Requests Card Example -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2"
+                                                    style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                                                    <div
+                                                        class="text-x font-weight-bold text-warning text-uppercase mb-1">
+                                                        Đơn đã hủy</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">da huy</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Content Row -->
+                        <div style="display: flex;justify-content: center;width: 80%;margin: auto;">
+                            <ul class="nav nav-pills nav-fill" id="myTab" role="tablist"
+                                style="display: flex;justify-content: space-between;width: 80%;">
+
+                                <li class="nav-item btn-lg">
+                                    <a class="nav-link active " id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                        aria-controls="home" aria-selected="true" style="border: 1px solid blue;">Chưa
+                                        Giao Hàng</a>
+                                </li>
+                                <li class="nav-item btn-lg">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                        aria-controls="profile" aria-selected="false"
+                                        style="border: 1px solid blue;">Đang Giao Hàng</a>
+                                </li>
+                                <li class="nav-item btn-lg">
+                                    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab"
+                                        aria-controls="messages" aria-selected="false"
+                                        style="border: 1px solid blue;">Đã Giao Hàng</a>
+                                </li>
+                                <li class="nav-item btn-lg">
+                                    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                                        aria-controls="settings" aria-selected="false"
+                                        style="border: 1px solid blue;">Đã Hủy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <br />
+
+
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                chua giao
+                            </div>
+                            <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                dang giao
+                            </div>
+                            <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                                da giao
+                            </div>
+                            <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                                da huy
+                            </div>
+                        </div>
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="CHAY/vendor/jquery/jquery.min.js"></script>
+    <script src="CHAY/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="CHAY/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="CHAY/js/sb-admin-2.min.js"></script>
+
+    <script>
+        // rút gọn file ảnh chỉ lấy tên ảnh, ví dụ: abc.png
+        function getRelativeImagePath(absolutePath) {
+            const rootPath = '<%= rootPath.replace(/\\/g, "\\\\") %>';
+            const relativePath = absolutePath ? absolutePath.replace(rootPath, '').replace(/\\/g, '/').replace(/^\/?images\/upload\//, '') : '';
+            return relativePath;
+        }
+        // format tiền tệ
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+    </script>
+</body>
+
+</html>

@@ -7,11 +7,14 @@ const { uploadSingleFile } = require("../../../services/services")
 
 module.exports = {
     formInsertSP: async (req, res) => {
+        var sessions = req.session;
+        let taikhoan = sessions.tk
+        let loggedIn = sessions.loggedIn
         let loaiSP = await LoaiSP.find({}).exec()
         console.log("loaiSP: ", loaiSP);
         res.render("ADMINQL/QuanLy/QL_SanPham/createSanPham.ejs",
             {
-                loaiSP
+                loaiSP, loggedIn, taikhoan
             })
     },
 

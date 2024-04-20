@@ -7,13 +7,16 @@ const { uploadSingleFile } = require("../../../services/services")
 
 module.exports = {
     formUpdateSP: async (req, res) => {
+        var sessions = req.session;
+        let taikhoan = sessions.tk
+        let loggedIn = sessions.loggedIn
         let idSuaSP = req.query.idSuaSP
         let loaiSP = await LoaiSP.find({}).exec()
         let nutSuaSP = await SanPham.findById(idSuaSP).populate('IdLoaiSP').exec()
         console.log("loaiSP: ", loaiSP);
         res.render("ADMINQL/QuanLy/QL_SanPham/editSanPham.ejs",
             {
-                loaiSP, nutSuaSP
+                loaiSP, nutSuaSP, loggedIn, taikhoan
             })
     },
 

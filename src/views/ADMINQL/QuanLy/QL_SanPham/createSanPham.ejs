@@ -214,7 +214,8 @@
                 const ThuocTinh = document.getElementById('ThuocTinh').value;
                 const IdLoaiSP = document.getElementById('IdLoaiSP').value;
                 const NB_BC = document.getElementById('NB_BC').value;
-                const MoTa = document.getElementById('MoTa').value;
+                const MoTa = CKEDITOR.instances.MoTa.getData();
+                // const MoTa = document.getElementById('MoTa').value;
                 // Lấy giá trị từ CKEditor
                 // const MoTa = CKEDITOR.instances.MoTa.getData();
                 const Image = document.getElementById('Image').files[0]; // Đây là file ảnh
@@ -253,6 +254,15 @@
                     })
             });
         });
+    </script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('MoTa', {
+            extraPlugins:'filebrowser',
+            filebrowserBrowseUrl:'/list',//upload location
+            filebrowserUploadMethod:'form',
+            filebrowserUploadUrl:'/upload'//route
+        })
     </script>
 </body>
 

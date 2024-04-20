@@ -18,6 +18,7 @@ module.exports = {
             const relativePath = absolutePath ? absolutePath.replace(rootPath, '').replace(/\\/g, '/').replace(/^\/?images\/upload\//, '') : '';
             return relativePath;
         }
+
         const sanphamGioHang = await Cart.findOne({ MaTKKH: req.session.userId }).populate('cart.items.productId').exec();
         // hiển thị kiểu phân loại
         let loaiSP = await LoaiSP.find().exec();
@@ -27,13 +28,30 @@ module.exports = {
             tongSL.push({ TenLoaiSP: loaiSp.TenLoaiSP, soLuongSanPham, IDLoaiSP: loaiSp._id });
         }
         
+        let tenSPSearch = req.query.tenSPSearch
         let idPL = req.query.idPL
         req.session.idPL = idPL;
-        let allsp = await SanPham.find({IdLoaiSP: idPL}).exec()
-        let loaisp = await LoaiSP.find().exec()
-        res.render("HOME/Layouts/TrangSP/TrangSP.ejs", {
-            loaisp, sanphamGioHang, hoten, loggedIn, allsp, tongSL, formatCurrency, getRelativeImagePath, rootPath: '/'
-        })
+        if(idPL){
+            let allsp = await SanPham.find({IdLoaiSP: idPL}).exec() 
+            let loaisp = await LoaiSP.find().exec()   
+            res.render("HOME/Layouts/TrangSP/TrangSP.ejs", {
+                loaisp, sanphamGioHang, hoten, loggedIn, allsp, tongSL, formatCurrency, getRelativeImagePath, rootPath: '/'
+            })
+        }
+        else if(tenSPSearch){
+            const allsp = await SanPham.find({TenSP: { $regex: new RegExp(tenSPSearch, 'i') }}).populate('IdLoaiSP').exec();
+            let loaisp = await LoaiSP.find().exec()   
+            res.render("HOME/Layouts/TrangSP/TrangSP.ejs", {
+                loaisp, sanphamGioHang, hoten, loggedIn, allsp, tongSL, formatCurrency, getRelativeImagePath, rootPath: '/'
+            })
+        } else {
+            let loaisp = await LoaiSP.find().exec()   
+            let allsp = await SanPham.find({}).exec() 
+            res.render("HOME/Layouts/TrangSP/TrangSP.ejs", {
+                loaisp, sanphamGioHang, hoten, loggedIn, allsp, tongSL, formatCurrency, getRelativeImagePath, rootPath: '/'
+            })
+        }
+
     },
 
 }
