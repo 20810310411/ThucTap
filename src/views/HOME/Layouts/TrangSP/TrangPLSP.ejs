@@ -106,14 +106,10 @@
                                                 <ul class="pagination">
                                                 <% 
                                                   const pre = curPage <= 1 ? curPage : curPage - 1; 
-                                                  const next = curPage >= soTrang ? curPage : parseInt(curPage) + 1     
-                                                  let urlparam = ""
-                                                  if (searchSPP && searchSPP != "") {
-                                                    urlparam += `&idPL=${searchSPP}`
-                                                  }       
+                                                  const next = curPage >= soTrang ? curPage : parseInt(curPage) + 1            
                                                 %>
                                                     <li class="page-item">
-                                                        <a class="page-link" style=" font-weight: bolder;" href="/TrangSP?page=<%=pre%><%= urlparam %>">
+                                                        <a class="page-link" style=" font-weight: bolder;" href="/TrangPLSP?page=<%=pre%>&idPL=<%= timSearch%>">
                                                             &lt;
                                                         </a>
                                                     </li>
@@ -121,13 +117,13 @@
                                                     var active="" ; 
                                                     if(i == curPage) active="active" ; %>
                                                     <li class="page-item <%=active%>">
-                                                        <a class="page-link" style="font-size: 18px; font-weight: bolder;"  href="/TrangSP?page=<%=i%><%= urlparam %>">
+                                                        <a class="page-link" style="font-size: 18px; font-weight: bolder;"  href="/TrangPLSP?page=<%=i%>&idPL=<%= timSearch%>">
                                                             <%=i%>                          
                                                         </a>
                                                     </li>                
                                                 <% } %>                                                      
                                                     <li class="page-item">
-                                                        <a class="page-link" style=" font-weight: bolder;" href="/TrangSP?page=<%=next%><%= urlparam %>">
+                                                        <a class="page-link" style=" font-weight: bolder;" href="/TrangPLSP?page=<%=next%>&idPL=<%= timSearch%>">
                                                             &gt;
                                                         </a>
                                                     </li>                     

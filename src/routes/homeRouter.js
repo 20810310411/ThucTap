@@ -21,8 +21,10 @@ const { getQLHD } = require("../controllers/ADMINQL/QL_HoaDon/homeQLHDController
 // HOME
 // HomeTrangChuController
 const { getTrangChu, ThongTinTK } = require("../controllers/HomeTrangChu/homeController");
-// TrangSPController
-const { TrangSanPham, } = require("../controllers/TrangSP/TrangSPController");
+// TrangSPController 
+const { TrangSanPham, getHomePhanTrang_ALLSP, getHomePhanTrang_PLSP  } = require("../controllers/TrangSP/TrangSPController");
+// TimKiemSPController 
+const { TimSanPham, getHomePhanTrang_TimSP } = require("../controllers/SearchSP/searchSPController");
 // Trang Chi tiết sản phẩm controller
 const { TrangChiTietSP, } = require("../controllers/ChiTietSP/chitietSPController");
 // Trang Giỏ hàng controller
@@ -72,8 +74,22 @@ router.get("/", getTrangChu)
 
 // SAN PHAM
 router.get("/TrangSP", TrangSanPham)
+router.get("/TrangSP", async (req,res)=> {
+    if (req.query.idPL){
+        return getHomePhanTrang_PLSP (req,res)
+    }
+    else if (!req.query.idPL){
+        return getHomePhanTrang_ALLSP ( req,res)
+    }
+    else {
+        res.redirect("/TrangSP")
+    }
+})
 router.get("/ChiTietSP", TrangChiTietSP)
-router.get("/searchSP", TrangSanPham)
+router.get("/searchSP", TimSanPham)
+router.get("/searchSP", getHomePhanTrang_TimSP) 
+
+
 
 //GioHang 
 router.get("/thongtingiohang", thongtinGioHang)
